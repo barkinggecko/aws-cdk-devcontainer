@@ -1,4 +1,4 @@
-# cdk-devcontainer
+# aws-cdk-devcontainer
 
 'devcontainers' save huge amounts of time when onboarding new developers to a project or spinning up projects you may not have worked with for a while. A devcontainer should provide a pre-configured environment for building, deploying and in many cases running a project.
 
@@ -6,7 +6,8 @@ This devcontainer configuration provides an Ubuntu-based environment pre-configu
 
 ## Dependencies
 
-You will of course require a functional Docker installation on your host machine. The project currently presumes a Linux host (for example, through references to environment variables in `devcontainer.json`) but the assets should be adjustable for other OSes.
+* You require a functional Docker installation on your host machine. 
+* `devcontainer.json` currently references the `source` directories for mounts as if they were on a Linux file system. Edit the value of `source` accordingly if you are on another platform.
 
 ## Features
 
@@ -20,7 +21,9 @@ You can launch this devcontainer within VS Code or standalone.
 
 ### VS Code devcontainer
 
-Copy the `.devcontainer` directory to the root of your new project. VS Code should prompt you to open your project in the container or you can select 'Reopen in container' from the VS Code Remote menu.
+* Copy the `.devcontainer` directory to the root of your new project. 
+* If your Docker host is a *nix, edit `USER_UID` and `USER_GID` in the `Dockerfile` to represent the user ID and group ID of the user you run the container as.
+* If VS Code does not prompt you to open your project in the container, you can select 'Reopen in container' from the VS Code Remote menu.
 
 ### Standalone devcontainer
 
