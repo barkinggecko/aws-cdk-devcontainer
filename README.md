@@ -32,11 +32,11 @@ First, uncomment the lines at the end of the Dockerfile that enable the volume f
 Then build the container ...
 
 ```bash
-docker build -t cdk-devcontainer .
+docker build -t aws-cdk-devcontainer .
 ```
 
 You can then run the container ...
 
 ```
-docker run -it --rm -v ~/.aws:/home/devcontainer/.aws -v $(pwd):/opt/app cdk-devcontainer
+docker run -it --rm -v ~/.aws:/home/devcontainer/.aws -v $(pwd):/opt/app aws-cdk-devcontainer
 ```
