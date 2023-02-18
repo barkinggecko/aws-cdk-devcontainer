@@ -50,7 +50,7 @@ ARG USER_GID="1000"
 # No need to run `apt-get clean -y` because this is automatically done by 
 # Ubuntu. Removing `/var/lib/apt/lists/*` keeps the image layer size down.
 RUN set -x \
- && deps=" \
+  && deps=" \
   ca-certificates \
   curl \
   git \
@@ -63,15 +63,15 @@ RUN set -x \
   vim \
   wget \
   " \
- && apt-get update && apt-get install -y ${deps} --no-install-recommends \
- && rm -rf /var/lib/apt/lists/* \  
- && locale-gen ${LOCALE} 
+  && apt-get update && apt-get install -y ${deps} --no-install-recommends \
+  && rm -rf /var/lib/apt/lists/* \  
+  && locale-gen ${LOCALE} 
 
 # Create the non-root user and enable sudo for them.
 RUN groupadd --gid ${USER_GID} ${USER_NAME} \
-    && useradd --create-home --uid ${USER_UID} --gid ${USER_GID} -s /bin/bash ${USER_NAME} \
-    && echo "${USER_NAME} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers \
-    && chmod 0440 /etc/sudoers
+  && useradd --create-home --uid ${USER_UID} --gid ${USER_GID} -s /bin/bash ${USER_NAME} \
+  && echo "${USER_NAME} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers \
+  && chmod 0440 /etc/sudoers
 
 # Switch to non-root user.
 USER ${USER_NAME}
@@ -81,36 +81,36 @@ WORKDIR /home/${USER_NAME}
 
 # Install Python 3.
 RUN set -x \
- && deps=" \
+  && deps=" \
   python3 \ 
   python3-distutils \
   python3-venv \ 
   python-is-python3 \
   " \
- && sudo apt-get update && sudo apt-get install -y ${deps} --no-install-recommends \
- && sudo rm -rf /var/lib/apt/lists/* 
+  && sudo apt-get update && sudo apt-get install -y ${deps} --no-install-recommends \
+  && sudo rm -rf /var/lib/apt/lists/* 
 
  # Install Python dependencies. Add to the pip install list as required.
 RUN curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
- && python -m pip install aws-cdk-lib
+  && python -m pip install aws-cdk-lib
 
 # Install Node.js.
 RUN curl -sSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - \
- && deps="nodejs" \
- && sudo apt-get update && sudo apt-get install -y ${deps} --no-install-recommends \
- && sudo rm -rf /var/lib/apt/lists/* 
+  && deps="nodejs" \
+  && sudo apt-get update && sudo apt-get install -y ${deps} --no-install-recommends \
+  && sudo rm -rf /var/lib/apt/lists/* 
 
 # Install global Node.js dependencies.
 RUN sudo npm install --location=global typescript \
- && sudo npm install --location=global aws-cdk-lib \
- && sudo npm install --location=global aws-cdk
+  && sudo npm install --location=global aws-cdk-lib \
+  && sudo npm install --location=global aws-cdk
 
 # Install awscli v2.
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
-    && unzip awscliv2.zip \
-    && sudo ./aws/install \
-    && rm ./awscliv2.zip \
-    && rm -rf ./aws  
+  && unzip awscliv2.zip \
+  && sudo ./aws/install \
+  && rm ./awscliv2.zip \
+  && rm -rf ./aws  
 
 # AWS CDK does not support SSO, so install a utility to create legacy AWS CLI profiles
 # from SSO credentials. Run `yawsso` to copy credentials after logging in to SSO.
