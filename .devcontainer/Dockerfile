@@ -92,7 +92,8 @@ RUN set -x \
 
  # Install Python dependencies. Add to the pip install list as required.
 RUN curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
-  && python -m pip install aws-cdk-lib
+  && python -m pip install aws-cdk-lib \
+  && python -m pip install git-remote-codecommit
 
 # Install Node.js.
 RUN curl -sSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - \
@@ -105,12 +106,16 @@ RUN sudo npm install --location=global typescript \
   && sudo npm install --location=global aws-cdk-lib \
   && sudo npm install --location=global aws-cdk
 
-# Install awscli v2.
+# Install AWS CLI v2 and enable AWS CLI auto-completion.
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
   && unzip awscliv2.zip \
   && sudo ./aws/install \
   && rm ./awscliv2.zip \
-  && rm -rf ./aws  
+  && rm -rf ./aws \
+  && echo "" >> ~/.bashrc \
+  && echo "# Enables AWS CLI auto-completion." >> ~/.bashrc \
+  && echo "export PATH=/usr/local/bin:$PATH" >> ~/.bashrc \
+  && echo "complete -C '/usr/local/bin/aws_completer' aws" >> ~/.bashrc
 
 # AWS CDK does not support SSO, so install a utility to create legacy AWS CLI profiles
 # from SSO credentials. Run `yawsso` to copy credentials after logging in to SSO.
