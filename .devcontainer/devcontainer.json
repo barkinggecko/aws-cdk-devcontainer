@@ -1,10 +1,9 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/alpine
+// For format details, see https://aka.ms/devcontainer.json. 
 {
-	"name": "cdk-devcontainer",
+	"name": "aws-cdk-devcontainer",
 
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	// "image": "contino/aws-cdk",
+	// "image": "barkinggecko/aws-cdk-devcontainer",
 
 	"build": {
         // Path is relataive to the devcontainer.json file.
@@ -15,10 +14,6 @@
 		{ "source": "/home/${localEnv:USER}/.aws", "target": "/home/devcontainer/.aws", "type": "bind" }
 	]
 
-	// "dockerComposeFile": "compose.yaml",
-    // "service": "cdk",
-    // "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
-
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
@@ -26,7 +21,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "uname -a",
+	// "postCreateCommand": "",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
