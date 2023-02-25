@@ -3,12 +3,12 @@
 	"name": "aws-cdk-devcontainer",
 
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	// "image": "barkinggecko/aws-cdk-devcontainer",
+	"image": "barkinggecko/aws-cdk-devcontainer",
 
-	"build": {
-        // Path is relataive to the devcontainer.json file.
-        "dockerfile": "Dockerfile"
-    },
+	// "build": {
+    //     // Path is relataive to the devcontainer.json file.
+    //     "dockerfile": "Dockerfile"
+    // },
 
 	"mounts": [
 		{ "source": "/home/${localEnv:USER}/.aws", "target": "/home/devcontainer/.aws", "type": "bind" }
