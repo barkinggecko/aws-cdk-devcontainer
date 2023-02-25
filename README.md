@@ -12,8 +12,8 @@ This devcontainer configuration provides an Ubuntu-based environment pre-configu
 ## Features
 
 * The devcontainer supports Python and Node/Typescript CDKs.
-* The devcontainer will mount your project directory as a volume: `/workspaces` when running in VS Code and `/opt/app` when running standalone. 
-* The devcontainer will mount your local `~/.aws` directory as a volume. This very conveniently means that when operating within the container, you will be able to access AWS CLI credentials from your host machine.
+* The devcontainer will mount a project directory from your Docker host as a volume (available in the container as `/workspaces/<project name>` when running the devcontainer in VS Code and `/opt/app/<project name>` when running the devcontainer standalone). 
+* The devcontainer will mount the `~/.aws` directory from your Docker host as a volume (available as `~/.aws` in the container). This very conveniently means that when operating within the container, you will be able to access AWS CLI profiles and credentials from your host machine.
 * The devcontainer provides auto-completion for AWS CLI.
 * The devcontainer runs as user `devcontainer` with UID 1000 and GID 1000. This provides added security over typical container configurations that run as root. Given most users (on Ubuntu at least) run with UID 1000 and GID 1000, then files created within the container in volumes that are accessible outside the container (such as the project directory) should be editable by non-root users outside the container. This is a convenience that, for example, should allow users to perform git operations both inside and outside the container on the project directory.
 * The devcontainer provides `git-remote-codecommit` for those using AWS CodeCommit repositories.
