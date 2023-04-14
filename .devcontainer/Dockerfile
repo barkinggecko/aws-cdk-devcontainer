@@ -122,7 +122,7 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 RUN python -m pip install yawsso
 
 # Add Python utilities to PATH
-RUN export PATH="~/.local/bin:$PATH"
+RUN echo "export PATH=$PATH:~/.local/bin" >> ~/.bashrc
 
 # Allow for caching python modules
 VOLUME [ "/usr/lib/python3.8/site-packages/" ]
