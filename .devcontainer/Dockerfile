@@ -102,7 +102,8 @@ RUN curl -sSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - \
   && sudo rm -rf /var/lib/apt/lists/* 
 
 # Install global Node.js dependencies.
-RUN sudo npm install --location=global typescript \
+RUN sudo npm install --location=global npm \
+  && sudo npm install --location=global typescript \
   && sudo npm install --location=global aws-cdk-lib \
   && sudo npm install --location=global aws-cdk
 
