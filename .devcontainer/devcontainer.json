@@ -2,7 +2,16 @@
 {
 	"name": "aws-cdk-devcontainer",
 
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	// Choose `image` to get started quickly using the image already created, according to the Dockerfile
+	// in this directory, in hub.docker.com.
+	//
+	// Alternatively, use `build` to build your image from the Dockerfile in this directory. This will 
+	// ensure you have built with the latest version of all packages but also provides you with the option
+	// to extend the aws-dev-container by creating your own Dockerfile that starts with 
+	// `FROM barkinggecko/aws-cdk-devcontainer`.
+	//
+	// See https://containers.dev/guide/dockerfile for more information.
+
 	"image": "barkinggecko/aws-cdk-devcontainer",
 
 	// "build": {
@@ -28,16 +37,15 @@
 		// Configure properties specific to VS Code.
 		"vscode": {
 			// Add the IDs of extensions you want installed when the container is created.
+			// Alternatively, just use Setting Sync to ensure you are always running your
+			// preferred VS Code setup ( https://code.visualstudio.com/docs/editor/settings-sync ).
 			"extensions": [
-				// "amazonwebservices.aws-toolkit-vscode",
-				// "ban.spellright",
-				// "devadvice.serverlessconsole",
-				// "eamodio.gitlens",
-				// "gruntfuggly.todo-tree",
+				"amazonwebservices.aws-toolkit-vscode",
+				"devadvice.serverlessconsole",
 			]
 		}
 	},
 
-	// Uncommentz to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
 }
