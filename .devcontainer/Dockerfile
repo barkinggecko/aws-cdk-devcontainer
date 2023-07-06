@@ -5,7 +5,7 @@
 # some unorthodox alternative to libc and so whilst we can get CDk to run, we can't
 # install AWS CLI v2 and that's not acceptable. One might think that perhaps 
 # Amazon Linux might be a good alternative but I haven't had much luck running 
-# this as a devcontainer in VS Code.
+# this as a dev container in VS Code.
 #
 
 # Set Ubuntu version. Default to `latest`. 
@@ -130,8 +130,8 @@ VOLUME [ "/usr/lib/python3.8/site-packages/" ]
 
 VOLUME [ "/${USER_NAME}/.aws" ]
 
-# You might enable these if using the devcontainer outside of VS Code. When using VS Code 
-# devcontainers a volume is automatically created that exposes the project directory as 
+# You might enable these if using the dev container outside of VS Code. When using VS Code 
+# dev containers a volume is automatically created that exposes the project directory as 
 # `/workspaces/<project name>`.
 # VOLUME [ "/opt/app" ]
 # WORKDIR /opt/app
