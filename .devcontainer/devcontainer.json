@@ -2,23 +2,21 @@
 {
 	"name": "aws-cdk-devcontainer",
 
-	// Choose `image` to get started quickly using the image already created, according to the Dockerfile
-	// in this directory, in hub.docker.com.
-	//
-	// Alternatively, use `build` to build your image from the Dockerfile in this directory. This will 
-	// ensure you have built with the latest version of all packages but also provides you with the option
-	// to extend the aws-dev-container by creating your own Dockerfile that starts with 
-	// `FROM barkinggecko/aws-cdk-devcontainer`.
-	//
-	// See https://containers.dev/guide/dockerfile for more information.
+	// Ensure either `image` _or_ `build` is uncommented below. See https://containers.dev/guide/dockerfile for more information.
 
+	// Uncomment `image` to get started quickly using the pre-built image from hub.docker.com.
 	"image": "barkinggecko/aws-cdk-devcontainer",
 
+	// Alternatively, uncomment `build` to create your image from scratch using the Dockerfile in this directory. This will 
+	// ensure you have built with the latest versions of all packages but also provides you with the option to extend the 
+	// aws-dev-container by creating your own Dockerfile that starts with `FROM barkinggecko/aws-cdk-devcontainer`.
+    //     
+	// Note that `build.dockerfile` is a path relataive to the devcontainer.json file.
 	// "build": {
-    //     // Path is relataive to the devcontainer.json file.
     //     "dockerfile": "Dockerfile"
     // },
 
+	// Mount your local AWS CLI settings and credentials as a volume accessible within the container.
 	"mounts": [
 		{ "source": "/home/${localEnv:USER}/.aws", "target": "/home/devcontainer/.aws", "type": "bind" }
 	],
